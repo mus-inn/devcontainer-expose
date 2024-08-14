@@ -185,11 +185,7 @@ return [
         | if you enable authentication token validation.
         |
         */
-        'database' => implode(DIRECTORY_SEPARATOR, [
-            $_SERVER['HOME'] ?? __DIR__,
-            'expose_database',
-            'expose.db',
-        ]),
+        'database' => "/home/ubuntu/expose_database/expose.db",
 
         /*
         |--------------------------------------------------------------------------

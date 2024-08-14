@@ -2,8 +2,10 @@
     acme_dns cloudflare 0WVppu22VUf5oVG72i9qcOWzuhzVPzcpv_sfvice
 }
 
+dotshare.dev {
+    reverse_proxy :8080
+}
+
 *.dotshare.dev {
-    # Spécifie les certificats SSL/TLS à utiliser
-    #tls /etc/letsencrypt/live/expose.yourapp.tld/fullchain.pem /etc/letsencrypt/live/expose.yourapp.tld/privkey.pem
     reverse_proxy :8080
 }

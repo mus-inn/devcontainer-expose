@@ -291,6 +291,7 @@ class Factory
         /** @var DatabaseInterface $db */
         $db = app(DatabaseInterface::class);
 
+
         $migrations = (new Finder())
             ->files()
             ->ignoreDotFiles(true)

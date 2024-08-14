@@ -270,7 +270,7 @@ return [
         | request this subdomain for their own connection.
         |
         */
-        'subdomain' => 'monit',
+        'subdomain' => env('SUBDOMAIN', 'expose'),
 
         /*
         |--------------------------------------------------------------------------
@@ -325,7 +325,7 @@ return [
         |
         */
         'users' => [
-            'username' => 'password',
+            env('ADMIN_USERNAME', 'username') => env('ADMIN_PASSWORD', 'password'),
         ],
 
         /*

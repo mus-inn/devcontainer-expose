@@ -1,5 +1,5 @@
 {
-    acme_dns cloudflare 0WVppu22VUf5oVG72i9qcOWzuhzVPzcpv_sfvice
+    acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 }
 
 dotshare.dev {

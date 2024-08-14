@@ -46,17 +46,6 @@ echo "Installation de Composer et Caddy..."
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
-# Installation de Caddy
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update
-sudo apt install -y caddy
-
-# Configurer Caddy pour démarrer automatiquement
-sudo systemctl enable caddy
-sudo systemctl start caddy
-
 # Cloner votre projet Laravel Zero (ou le préparer)
 cd $APP_DIR
 git clone https://github.com/mus-inn/devcontainer-expose.git .
@@ -67,6 +56,13 @@ composer install --optimize-autoloader --no-dev
 #create sqlite database
 mkdir /home/ubuntu/.expose
 touch /home/ubuntu/.expose/expose.db
+
+#create caddy reverse
+mkdir caddy
+cd caddy
+wget -O caddy "https://caddyserver.com/api/download?os=linux&arch=amd64&p=github.com%2Fcaddy-dns%2Fcloudflare&idempotency=50077641828060"
+chmod +x caddy
+
 
 # Fin du script
 echo "Installation terminée. L'environnement pour Laravel Zero avec PHP 8.1 est prêt sur l'instance EC2."
